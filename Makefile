@@ -21,7 +21,9 @@ PROBE  = $(BUILD)/probe.c
 CFLAGS  ?= -O2 -Wall -Wextra -std=gnu99
 LDFLAGS ?=
 
-ifeq ($(shell uname -s),Darwin)
+# libSystem has the implementation only when building for the macOS host. A
+# cross build from a Mac still targets Linux, so key on CROSSCOMPILE, not uname.
+ifeq ($(CROSSCOMPILE)$(shell uname -s),Darwin)
     LIBS =
 else
     LIBS = -ldns_sd
