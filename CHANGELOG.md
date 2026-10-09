@@ -11,6 +11,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [v0.1.1]
+
+- Fix cross builds on macOS: link `-ldns_sd` whenever `CROSSCOMPILE` is set,
+  instead of skipping it because the build host is Darwin.
+
 ## [v0.1.0]
 
 Initial release.
